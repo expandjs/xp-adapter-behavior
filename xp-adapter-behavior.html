@@ -1,0 +1,72 @@
+<!--
+@license
+Copyright (c) 2015 The ExpandJS authors. All rights reserved.
+This code may only be used under the BSD style license found at https://expandjs.github.io/LICENSE.txt
+The complete set of authors may be found at https://expandjs.github.io/AUTHORS.txt
+The complete set of contributors may be found at https://expandjs.github.io/CONTRIBUTORS.txt
+-->
+
+<!--
+This behavior is used to add adapting capabilities on the context element.
+
+@behavior xp-adapter-behavior
+@description A behavior used to add adapting capabilities on the context element
+@keywords web app, html5, expandjs, web-components
+@group behaviors
+@homepage http://expandjs.com/elements/xp-adapter-behavior
+
+@dependency polymer Polymer/polymer#^1.0.0
+@dependency expandjs ExpandJS/expandjs#0.9.4
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../expandjs/expandjs.html">
+
+<script>
+    Polymer.XPAdapterBehavior = {
+
+        /**
+         * Used to set the adaptee.
+         *
+         * @method _adapt
+         * @param {Element | Object} [adaptee]
+         * @returns {Element | Object}
+         * @private
+         */
+        _adapt: function (adaptee) {
+
+            // Asserting
+            XP.assertArgument(XP.isVoid(adaptee) || XP.isElement(adaptee) || XP.isObject(adaptee), 1, 'Element or Object');
+
+            // Vars
+            var self  = this,
+                value = adaptee || null;
+
+            // Setting
+            self._setAdaptee(value);
+
+            return value;
+        },
+
+        /*********************************************************************/
+
+        // PROPERTIES
+        properties: {
+
+            /**
+             * The adapted element or object.
+             *
+             * @attribute adaptee
+             * @type Element | Object
+             * @notifies
+             * @readonly
+             */
+            adaptee: {
+                notify: true,
+                readOnly: true,
+                type: Object,
+                value: null
+            }
+        }
+    };
+</script>
