@@ -27,7 +27,7 @@ This behavior is used to add adapting capabilities on the context element.
     Polymer.XPAdapterBehavior = {
 
         /**
-         * Used to set the adaptee.
+         * Set the adaptee.
          *
          * @method _adapt
          * @param {Element | Object} [adaptee]
@@ -40,13 +40,12 @@ This behavior is used to add adapting capabilities on the context element.
             XP.assertArgument(XP.isVoid(adaptee) || XP.isElement(adaptee) || XP.isObject(adaptee), 1, 'Element or Object');
 
             // Vars
-            var self  = this,
-                value = adaptee || null;
+            var self = this;
 
             // Setting
-            self._setAdaptee(value);
+            self._setAdaptee(adaptee || null);
 
-            return value;
+            return self.adaptee;
         },
 
         /*********************************************************************/
@@ -65,7 +64,6 @@ This behavior is used to add adapting capabilities on the context element.
             adaptee: {
                 notify: true,
                 readOnly: true,
-                type: Object,
                 value: null
             }
         }
